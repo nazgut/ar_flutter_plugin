@@ -87,6 +87,7 @@ class ARAnchorManager {
     try {
       return await _channel.invokeMethod<bool>('addAnchor', anchor.toJson());
     } on PlatformException catch (e) {
+      print(e);
       return false;
     }
   }
