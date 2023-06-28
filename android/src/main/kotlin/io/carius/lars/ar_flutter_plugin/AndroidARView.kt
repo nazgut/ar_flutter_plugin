@@ -222,12 +222,13 @@ internal class AndroidARView(
                     when (call.method) {
                         "addAnchor" -> {
                             val anchorType: Int? = call.argument<Int>("type")
-                            println("Anchor Type: $anchorType")
                             if (anchorType != null){
                                 when(anchorType) {
                                     0 -> { // Plane Anchor
                                         val transform: ArrayList<Double>? = call.argument<ArrayList<Double>>("transformation")
                                         val name: String? = call.argument<String>("name")
+                                        println("name Type: $name")
+                                        println("transform Type: $transform")
                                         if ( name != null && transform != null){
                                             result.success(addPlaneAnchor(transform, name))
                                         } else {
