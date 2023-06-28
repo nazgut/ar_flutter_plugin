@@ -219,7 +219,6 @@ internal class AndroidARView(
     private val onAnchorMethodCall =
             object : MethodChannel.MethodCallHandler {
                 override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
-                    Log.d(TAG, "22222222222222222222222222222222222222222222222222222222222222222222222222222222")
                     when (call.method) {
                         "addAnchor" -> {
                             val anchorType: Int? = call.argument<Int>("type")
