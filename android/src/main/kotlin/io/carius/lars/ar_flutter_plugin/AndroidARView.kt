@@ -221,7 +221,7 @@ internal class AndroidARView(
                 override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
                     when (call.method) {
                         "addAnchor" -> {
-                            val anchorType: Int? = call.argument<Int>("type")
+                            val anchorType: Int? = 0
                             if (anchorType != null){
                                 when(anchorType) {
                                     0 -> { // Plane Anchor
