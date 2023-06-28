@@ -157,6 +157,7 @@ internal class AndroidARView(
             object : MethodChannel.MethodCallHandler {
                 override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
                     Log.d(TAG, "AndroidARView onobjectmethodcall reveived a call!")
+                    Log.d(TAG, "AndroidARView onobjectmethodcall reveived a call!")
                     when (call.method) {
                         "init" -> {
                             // objectManagerChannel.invokeMethod("onError", listOf("ObjectTEST from
