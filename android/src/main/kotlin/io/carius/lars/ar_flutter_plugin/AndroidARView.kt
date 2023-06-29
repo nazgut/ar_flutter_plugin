@@ -851,7 +851,7 @@ internal class AndroidARView(
             anchorNode.setParent(arSceneView.scene)
             true
         } catch (e: Exception) {
-            println("Error Anchor: ${e.message}")
+            println("Error Anchor: $e")
             false
         }
     }
