@@ -844,7 +844,6 @@ internal class AndroidARView(
         return try {
             val position = floatArrayOf(deserializeMatrix4(transform).second.x, deserializeMatrix4(transform).second.y, deserializeMatrix4(transform).second.z)
             val rotation = floatArrayOf(deserializeMatrix4(transform).third.x, deserializeMatrix4(transform).third.y, deserializeMatrix4(transform).third.z, deserializeMatrix4(transform).third.w)
-            println("%%%%%%%%%arSceneView.session: $arSceneView.session")
             val anchor: Anchor = arSceneView.session!!.createAnchor(Pose(position, rotation))
             println("%%%%%%%%%Anchor: $anchor")
             val anchorNode = AnchorNode(anchor)
@@ -852,7 +851,7 @@ internal class AndroidARView(
             anchorNode.setParent(arSceneView.scene)
             true
         } catch (e: Exception) {
-            println("Error Anchor: $e")
+            println("Error Anchor: ${e.message}")
             false
         }
     }
