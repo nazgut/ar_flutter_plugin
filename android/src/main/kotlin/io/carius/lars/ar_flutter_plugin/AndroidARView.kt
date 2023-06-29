@@ -840,15 +840,19 @@ internal class AndroidARView(
         return false
     }
 
-    private fun addPlaneAnchor(transform: ArrayList<Double>, name: String): Boolean {   
-        val position = floatArrayOf(deserializeMatrix4(transform).second.x, deserializeMatrix4(transform).second.y, deserializeMatrix4(transform).second.z)
-        val rotation = floatArrayOf(deserializeMatrix4(transform).third.x, deserializeMatrix4(transform).third.y, deserializeMatrix4(transform).third.z, deserializeMatrix4(transform).third.w)
-        val anchor: Anchor = arSceneView.session!!.createAnchor(Pose(position, rotation))
-        println("%%%%%%%%%Anchor: $anchor")
-        val anchorNode = AnchorNode(anchor)
-        anchorNode.name = name
-        anchorNode.setParent(arSceneView.scene)
-        return true
+    private fun addPlaneAnchor(transform: ArrayList<Double>, name: String): Boolean {
+        return try {
+            val position = floatArrayOf(deserializeMatrix4(transform).second.x, deserializeMatrix4(transform).second.y, deserializeMatrix4(transform).second.z)
+            val rotation = floatArrayOf(deserializeMatrix4(transform).third.x, deserializeMatrix4(transform).third.y, deserializeMatrix4(transform).third.z, deserializeMatrix4(transform).third.w)
+            val anchor: Anchor = arSceneView.session!!.createAnchor(Pose(position, rotation))
+            val anchorNode = AnchorNode(anchor)
+            anchorNode.name = name
+            anchorNode.setParent(arSceneView.scene)
+            true
+        } catch (e: Exception) {
+            println("Error Anchor: $e")
+            false
+        }
     }
 
     private fun removeAnchor(name: String) {
