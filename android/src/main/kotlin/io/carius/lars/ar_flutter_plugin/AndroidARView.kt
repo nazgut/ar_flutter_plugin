@@ -845,6 +845,7 @@ internal class AndroidARView(
             val position = floatArrayOf(deserializeMatrix4(transform).second.x, deserializeMatrix4(transform).second.y, deserializeMatrix4(transform).second.z)
             val rotation = floatArrayOf(deserializeMatrix4(transform).third.x, deserializeMatrix4(transform).third.y, deserializeMatrix4(transform).third.z, deserializeMatrix4(transform).third.w)
             val anchor: Anchor = arSceneView.session!!.createAnchor(Pose(position, rotation))
+            println(anchor)
             val anchorNode = AnchorNode(anchor)
             anchorNode.name = name
             anchorNode.setParent(arSceneView.scene)
