@@ -843,9 +843,8 @@ internal class AndroidARView(
     private fun addPlaneAnchor(transform: ArrayList<Double>, name: String): Boolean {
         return try {
             val position = floatArrayOf(deserializeMatrix4(transform).second.x, deserializeMatrix4(transform).second.y, deserializeMatrix4(transform).second.z)
-            println("%%%%%%%%%position: $position")
             val rotation = floatArrayOf(deserializeMatrix4(transform).third.x, deserializeMatrix4(transform).third.y, deserializeMatrix4(transform).third.z, deserializeMatrix4(transform).third.w)
-            println("%%%%%%%%%rotation: $rotation")
+            println("%%%%%%%%%arSceneView.session: $arSceneView.session")
             val anchor: Anchor = arSceneView.session!!.createAnchor(Pose(position, rotation))
             println("%%%%%%%%%Anchor: $anchor")
             val anchorNode = AnchorNode(anchor)
