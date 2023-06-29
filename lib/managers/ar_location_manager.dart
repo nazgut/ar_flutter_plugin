@@ -80,12 +80,19 @@ class ARLocationManager {
     locationStream = Geolocator.getPositionStream(
             locationSettings: LocationSettings(accuracy: LocationAccuracy.high))
         .listen((Position position) {
-      print(
-          position.latitude.toString() + ', ' + position.longitude.toString());
+      //print(position.latitude.toString() + ', ' + position.longitude.toString());
       currentLocation = position;
+      handleLocationChange();
     });
 
     return true;
+  }
+
+  void handleLocationChange() {
+    // Handle the updated location data
+    // You can perform any actions or update UI based on the new location
+    print(
+        'Location changed: ${currentLocation.latitude.toString()}, ${currentLocation.longitude.toString()}');
   }
 
   /// Stops the high-precision location updates
